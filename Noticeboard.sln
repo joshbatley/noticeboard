@@ -4,7 +4,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C10637F-185
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{56227D7A-2779-40D2-8D0F-1E7F1D29DF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noticeboard.Core", "src\Noticeboard.Core\Noticeboard.Core.csproj", "{05B653A8-7FC7-4141-8321-4A70E50E3FD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noticeboard", "src\Noticeboard\Noticeboard.csproj", "{05B653A8-7FC7-4141-8321-4A70E50E3FD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoticeboardTest", "test\NoticeboardTest\NoticeboardTest.csproj", "{F32B215C-7130-40DE-B3C4-394E5214B82A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,11 +15,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{05B653A8-7FC7-4141-8321-4A70E50E3FD2} = {8C10637F-1853-4EF4-9AB3-44712F30C7F6}
+		{F32B215C-7130-40DE-B3C4-394E5214B82A} = {56227D7A-2779-40D2-8D0F-1E7F1D29DF39}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{05B653A8-7FC7-4141-8321-4A70E50E3FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05B653A8-7FC7-4141-8321-4A70E50E3FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05B653A8-7FC7-4141-8321-4A70E50E3FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05B653A8-7FC7-4141-8321-4A70E50E3FD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F32B215C-7130-40DE-B3C4-394E5214B82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32B215C-7130-40DE-B3C4-394E5214B82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32B215C-7130-40DE-B3C4-394E5214B82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32B215C-7130-40DE-B3C4-394E5214B82A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
