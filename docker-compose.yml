@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack
+    network_mode: bridge
+    environment:
+      - SERVICES=s3
+      - DATA_DIR=/tmp/localstack/data
+    ports:
+      - "4566:4566"
+    volumes:
+      - "./data/localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
