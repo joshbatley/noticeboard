@@ -1,6 +1,6 @@
 namespace Noticeboard.Core.Models;
 
-public class NoticeboardItem
+public class NoticeRequest
 {
     public IEnumerable<IFormFile> files { get; set; }
 }

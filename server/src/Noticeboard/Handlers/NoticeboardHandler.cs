@@ -12,9 +12,9 @@ public class NoticeboardHandler
 {
     public class Query : IRequest<NoticeboardResult>
     {
-        public NoticeboardItem Item;
+        public NoticeRequest Item;
 
-        public Query(NoticeboardItem item) => 
+        public Query(NoticeRequest item) => 
             (Item) = (item);
     }
 
@@ -28,11 +28,13 @@ public class NoticeboardHandler
     {
         private readonly ILogger _logger;
         private readonly IS3Client _s3Client;
+        private readonly IDynamoClient _dynamoClient;
 
-        public Handler(ILogger logger, IS3Client s3Client)
+        public Handler(ILogger logger, IS3Client s3Client, IDynamoClient dynamoClient)
         {
             _logger = logger;
             _s3Client = s3Client;
+            _dynamoClient = dynamoClient;
         }
         
         public async Task<NoticeboardResult> Handle(Query request, CancellationToken cancellationToken)
@@ -41,6 +43,7 @@ public class NoticeboardHandler
             {
                 await _s3Client.UploadFile(itemFile);
             }
+            var t = await _dynamoClient.Get();
             var items = await _s3Client.ListBucketsAsync();
             return new NoticeboardResult(new NoticeboardResponse{items = items});
         }

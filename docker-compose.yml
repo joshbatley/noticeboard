@@ -5,10 +5,17 @@ services:
     image: localstack/localstack
     network_mode: bridge
     environment:
-      - SERVICES=s3
+      - SERVICES=dynamodb,s3
       - DATA_DIR=/tmp/localstack/data
     ports:
       - "4566:4566"
     volumes:
       - "./data/localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
+  # frontend:
+  #   container_name: frontend
+  #   ports:
+  #     - "8080:80"
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: frontend.dockerfile

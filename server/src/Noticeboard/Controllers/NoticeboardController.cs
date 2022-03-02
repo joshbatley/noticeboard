@@ -18,7 +18,7 @@ public class NoticeboardController : ControllerBase
     }
 
     [HttpPost("post")]
-    public async Task<ActionResult> Post([FromForm]NoticeboardItem content)
+    public async Task<ActionResult> Post([FromForm]NoticeRequest content)
     {
         var query = new NoticeboardHandler.Query(content);
         var res = await _mediator.Send(query);

@@ -23,7 +23,7 @@ public class S3Client : IS3Client
     {
         _amazonS3 = amazonS3;
         _logger = logger;
-        _bucket = s3Options.Value.bucketName;
+        _bucket = s3Options.Value.BucketName;
     }
 
     public async Task<ListObjectsResponse> ListBucketsAsync()
