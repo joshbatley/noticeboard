@@ -5,7 +5,9 @@ services:
     image: localstack/localstack
     network_mode: bridge
     environment:
+      - AWS_DEFAULT_REGION=eu-west-2
       - SERVICES=dynamodb,s3
+      - EDGE_PORT=4566
       - DATA_DIR=/tmp/localstack/data
     ports:
       - "4566:4566"

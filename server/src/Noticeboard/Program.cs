@@ -5,10 +5,11 @@ using Serilog;
 using ILogger = Serilog.ILogger;
 
 var builder = WebApplication.CreateBuilder(args);
-var logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration).CreateLogger();
+var logger = new LoggerConfiguration()
+        .ReadFrom.Configuration(builder.Configuration)
+        .CreateLogger();
 
 builder.Logging.AddSerilog(logger);
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

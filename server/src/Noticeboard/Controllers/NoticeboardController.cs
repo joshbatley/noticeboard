@@ -1,4 +1,3 @@
-using Amazon.S3;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Noticeboard.Core.Handlers;
