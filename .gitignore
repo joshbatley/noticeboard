@@ -88,3 +88,14 @@ yarn-debug.log*
 yarn-error.log*
 
 .terraform/
+
+# Local .terraform directories
+**/.terraform/*
+# .tfstate files
+*.tfstate
+*.tfstate.*
+.terraform
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
