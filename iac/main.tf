@@ -26,8 +26,8 @@ resource "aws_dynamodb_table" "d" {
   read_capacity  = 10
   write_capacity = 50
   name           = "edgmont-items"
-  hash_key       = "UserId"
-  range_key      = "GeneratedDate"
+  hash_key       = "GeneratedDate"
+  range_key      = "Tag"
 
   attribute {
     name = "UserId"
@@ -38,10 +38,16 @@ resource "aws_dynamodb_table" "d" {
     name = "GeneratedDate"
     type = "S"
   }
-  
+
   attribute {
     name = "Tag"
     type = "S"
+  }
+
+  local_secondary_index {
+    name            = "Tag-meta-index"
+    projection_type = "ALL"
+    range_key       = "Tag"
   }
 
   global_secondary_index {
@@ -49,7 +55,7 @@ resource "aws_dynamodb_table" "d" {
     hash_key        = "UserId"
     range_key       = "Tag"
     projection_type = "ALL"
-    read_capacity  = 10
-    write_capacity = 50
+    read_capacity   = 10
+    write_capacity  = 50
   }
 }
