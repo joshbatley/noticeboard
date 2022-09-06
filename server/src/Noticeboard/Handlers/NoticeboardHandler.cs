@@ -1,6 +1,8 @@
 using MediatR;
 using Noticeboard.Core.Clients;
 using Noticeboard.Core.Models;
+using Noticeboard.Core.Models.DynamoDB;
+using Noticeboard.Core.Models.NoticeItem;
 using Noticeboard.Core.Models.Responses;
 using OneOf;
 using OneOf.Types;
@@ -39,13 +41,31 @@ public class NoticeboardHandler
         
         public async Task<NoticeboardResult> Handle(Query request, CancellationToken cancellationToken)
         {
-            foreach (var itemFile in request.Item.files)
+            var file = request.Item.files.FirstOrDefault();
+            var newDocument = new NoticeDocument
             {
-                await _s3Client.UploadFile(itemFile);
-            }
-            var t = await _dynamoClient.Get();
+                UserId = "my_user_id",
+                Type = NoticeType.File,
+                Name = file.FileName,
+                Tags = new string[]{ },
+                Archived = false,
+                TTL = 0,
+            };
+            await _s3Client.UploadFile(file, newDocument.Id);
+            await _dynamoClient.CreateItem(newDocument);
             var items = await _s3Client.ListBucketsAsync();
             return new NoticeboardResult(new NoticeboardResponse{items = items});
         }
-    }
+
+        // private Task AddFileToS3(IFormFile files, string fileName)
+        // {
+        //     
+        // }
+
+    //     private async Task<string> AddRecord(string file)
+    //     {
+    //         var doc = new NoticeDocument()
+    //         return doc.Id;
+    //     }
+     }
 }

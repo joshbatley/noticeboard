@@ -10,7 +10,7 @@ services:
       - EDGE_PORT=4566
       - DATA_DIR=/tmp/localstack/data
     ports:
-      - "4566:4566"
+      - '4566-4583:4566-4583'
     volumes:
       - "./data/localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"

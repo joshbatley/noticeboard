@@ -10,7 +10,7 @@ namespace Noticeboard.Core.Clients;
 public interface IS3Client
 {
     Task<ListObjectsResponse> ListBucketsAsync();
-    Task UploadFile(IFormFile file);
+    Task UploadFile(IFormFile file, string fileName);
 }
 
 public class S3Client : IS3Client
@@ -31,12 +31,12 @@ public class S3Client : IS3Client
         return await _amazonS3.ListObjectsAsync(_bucket);
     }
 
-    public async Task UploadFile(IFormFile file)
+    public async Task UploadFile(IFormFile file, string fileName)
     {
         var request = new PutObjectRequest
         {
             InputStream = file.OpenReadStream(),
-            Key = file.FileName,
+            Key = fileName,
             BucketName = _bucket,
             ContentType = file.ContentType
         };
